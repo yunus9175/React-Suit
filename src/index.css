@@ -243,6 +243,7 @@ button:hover {
   .todo-item { flex-direction: column; align-items: stretch; gap: 8px; }
   .todo-actions { justify-content: flex-end; }
   .flex { flex-direction: column; align-items: stretch; }
+  input { width: 90%; }
 }
 
 /* Shopping */
