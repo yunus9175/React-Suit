@@ -1,0 +1,8 @@
+# robots.txt for react-practice
+# Syntax: https://www.robotstxt.org/robotstxt.html
+
+User-agent: *
+Allow: /
+
+Sitemap: /sitemap.xml
+
