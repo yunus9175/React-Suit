@@ -19,6 +19,7 @@ export function Shimmer({ width = '100%', height = '20px', borderRadius = '4px',
         background: 'linear-gradient(90deg, var(--muted) 25%, color-mix(in oklab, var(--muted) 60%, transparent) 50%, var(--muted) 75%)',
         backgroundSize: '200% 100%',
         animation: 'shimmer 1.5s infinite',
+        willChange: 'background-position',
         ...style
       }}
     />

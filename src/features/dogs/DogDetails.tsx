@@ -65,9 +65,14 @@ export default function DogDetails() {
                   inset: 0,
                   width: "100%",
                   height: "100%",
-                  objectFit: "cover"
+                  objectFit: "cover",
+                  backgroundColor: "var(--muted)"
                 }}
                 loading="eager"
+                onError={(e) => {
+                  const target = e.target as HTMLImageElement;
+                  target.style.display = 'none';
+                }}
               />
             )}
           </div>
@@ -99,7 +104,12 @@ export default function DogDetails() {
                         width: "100%",
                         height: 60,
                         objectFit: "cover",
-                        display: "block"
+                        display: "block",
+                        backgroundColor: "var(--muted)"
+                      }}
+                      onError={(e) => {
+                        const target = e.target as HTMLImageElement;
+                        target.style.display = 'none';
                       }}
                     />
                   </button>

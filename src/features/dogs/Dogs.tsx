@@ -177,7 +177,18 @@ export default function Dogs() {
                   alt={breed.name}
                   loading="lazy"
                   sizes="(max-width: 600px) 50vw, (max-width: 1200px) 33vw, 200px"
-                  style={{ position: "absolute", inset: 0, width: "100%", height: "100%", objectFit: "cover" }}
+                  style={{ 
+                    position: "absolute", 
+                    inset: 0, 
+                    width: "100%", 
+                    height: "100%", 
+                    objectFit: "cover",
+                    backgroundColor: "var(--muted)"
+                  }}
+                  onError={(e) => {
+                    const target = e.target as HTMLImageElement;
+                    target.style.display = 'none';
+                  }}
                 />
               )}
             </div>

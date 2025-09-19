@@ -162,6 +162,7 @@ button:hover {
   background: linear-gradient(90deg, var(--muted) 25%, color-mix(in oklab, var(--muted) 60%, transparent) 50%, var(--muted) 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
+  will-change: background-position;
 }
 
 /* Calculator */
@@ -214,6 +215,7 @@ button:hover {
 
 @media (prefers-reduced-motion: reduce) {
   * { animation: none !important; transition: none !important; }
+  .shimmer { animation: none !important; }
 }
 
 /* Cart page */
@@ -312,6 +314,13 @@ button:hover {
   /* Shimmer mobile responsive */
   .shimmer-card { padding: 8px !important; }
   .shimmer-card .shimmer { height: 100px !important; }
+  
+  /* Image loading improvements */
+  img { 
+    max-width: 100% !important; 
+    height: auto !important;
+    display: block !important;
+  }
 }
 
 /* Shopping */
