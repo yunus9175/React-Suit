@@ -9,7 +9,7 @@ export default function DogDetails() {
   const [selectedImage, setSelectedImage] = useState<string | null>(null)
 
   const { data: breed, isLoading, isError, refetch } = useGetBreedByIdQuery(id, { skip: Number.isNaN(id) })
-  const { data: images, isLoading: imagesLoading } = useGetImagesByBreedQuery({ breedId: id, limit: 12 })
+  const { data: images } = useGetImagesByBreedQuery({ breedId: id, limit: 12 })
 
   if (Number.isNaN(id)) return <div>Invalid breed id.</div>
   
