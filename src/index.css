@@ -310,7 +310,7 @@ button:hover {
   
   /* Date input mobile responsive */
   input[type="date"] { 
-    /* width: 100% !important;  */
+    width: 81% !important; 
     /* min-width: 0 !important; */
     font-size: 16px !important; /* Prevents zoom on iOS */
   }
