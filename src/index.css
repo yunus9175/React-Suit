@@ -155,14 +155,27 @@ button:hover {
 
 /* Shimmer */
 @keyframes shimmer {
-  0% { background-position: -200% 0; }
-  100% { background-position: 200% 0; }
+  0% { 
+    background-position: -200% 0; 
+  }
+  100% { 
+    background-position: 200% 0; 
+  }
 }
 .shimmer {
-  background: linear-gradient(90deg, var(--muted) 25%, color-mix(in oklab, var(--muted) 60%, transparent) 50%, var(--muted) 75%);
+  background: linear-gradient(
+    90deg,
+    var(--muted) 0%,
+    var(--muted) 25%,
+    rgba(255, 255, 255, 0.1) 50%,
+    var(--muted) 75%,
+    var(--muted) 100%
+  );
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  animation: shimmer 1.5s infinite ease-in-out;
   will-change: background-position;
+  position: relative;
+  overflow: hidden;
 }
 
 /* Calculator */
@@ -314,6 +327,22 @@ button:hover {
   /* Shimmer mobile responsive */
   .shimmer-card { padding: 8px !important; }
   .shimmer-card .shimmer { height: 100px !important; }
+  .shimmer-card .shimmer:not(:first-child) { height: 8px !important; }
+  .shimmer-card .shimmer:nth-child(1) { height: 8px !important; }
+  
+  /* Force shimmer animation on mobile */
+  .shimmer {
+    animation: shimmer 1.5s infinite ease-in-out !important;
+    background: linear-gradient(
+      90deg,
+      var(--muted) 0%,
+      var(--muted) 25%,
+      rgba(255, 255, 255, 0.15) 50%,
+      var(--muted) 75%,
+      var(--muted) 100%
+    ) !important;
+    background-size: 200% 100% !important;
+  }
   
   /* Image loading improvements */
   img { 
