@@ -1,6 +1,8 @@
-import { useEffect, useState } from 'react'
+import { useEffect, useState, useRef } from 'react'
 import { BrowserRouter, Routes, Route, NavLink, Link } from 'react-router-dom'
 import { lazy, Suspense } from 'react'
+import Dogs from './features/dogs/Dogs'
+import DogDetails from './features/dogs/DogDetails'
 const Todo = lazy(() => import('./common/components/Todo'))
 const Calculator = lazy(() => import('./common/components/Calculator'))
 const Shopping = lazy(() => import('./common/components/Shopping'))
@@ -15,11 +17,29 @@ function App() {
     return 'dark'
   })
   const [menuOpen, setMenuOpen] = useState(false)
+  const navRef = useRef<HTMLElement>(null)
 
   useEffect(() => {
     document.documentElement.setAttribute('data-theme', theme)
     localStorage.setItem('theme', theme)
   }, [theme])
+
+  // Close menu when clicking outside
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (navRef.current && !navRef.current.contains(event.target as Node)) {
+        setMenuOpen(false)
+      }
+    }
+
+    if (menuOpen) {
+      document.addEventListener('mousedown', handleClickOutside)
+    }
+
+    return () => {
+      document.removeEventListener('mousedown', handleClickOutside)
+    }
+  }, [menuOpen])
 
   const toggleTheme = () => setTheme((t) => (t === 'dark' ? 'light' : 'dark'))
 
@@ -27,10 +47,10 @@ function App() {
 
   return (
     <BrowserRouter>
-      <nav className="navbar">
+      <nav ref={navRef} className="navbar">
         <div className="nav-content">
           <div className="brand">Practice</div>
-          <button className="hamburger" aria-label="Menu" onClick={() => setMenuOpen(o => !o)}>
+          <button className={`hamburger ${menuOpen ? 'active' : ''}`} aria-label="Menu" onClick={() => setMenuOpen(o => !o)}>
             <span />
             <span />
             <span />
@@ -44,6 +64,9 @@ function App() {
             </NavLink>
             <NavLink to="/shopping" className={({ isActive }) => isActive ? 'link active' : 'link'}>
               Shopping
+            </NavLink>
+            <NavLink to="/dogs" className={({ isActive }) => isActive ? 'link active' : 'link'}>
+              Dogs
             </NavLink>
             <Link to="/cart" className="cart-badge" aria-label="Cart">
               🛒<span className="badge">{cartCount}</span>
@@ -60,6 +83,8 @@ function App() {
             <Route path="/" element={<Todo />} />
             <Route path="/calculator" element={<Calculator />} />
             <Route path="/shopping" element={<Shopping />} />
+            <Route path="/dogs" element={<Dogs />} />
+            <Route path="/dogs/:id" element={<DogDetails />} />
             <Route path="/cart" element={<Cart />} />
           </Routes>
         </Suspense>
