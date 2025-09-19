@@ -302,7 +302,7 @@ button:hover {
   /* Dogs mobile responsive */
   .dogs .grid { grid-template-columns: repeat(auto-fill, minmax(150px, 1fr)) !important; gap: 12px !important; }
   .dogs .card { padding: 8px !important; }
-  .dogs .card img { height: 120px !important; }
+  /* .dogs .card img { height: 120px !important; } */
   .dogs h2 { font-size: 1.5rem !important; margin-bottom: 16px !important; }
   .dogs input { max-width: calc(100vw - 32px) !important; }
   .dogs .search-container { display: flex !important; flex-direction: column !important; gap: 8px !important; }
@@ -347,7 +347,7 @@ button:hover {
   /* Image loading improvements */
   img { 
     max-width: 100% !important; 
-    height: auto !important;
+    /* height: auto !important; */
     display: block !important;
   }
 }

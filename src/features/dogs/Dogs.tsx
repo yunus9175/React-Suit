@@ -169,7 +169,7 @@ export default function Dogs() {
               paddingBottom: "56%",
               overflow: "hidden",
               borderRadius: 6,
-              background: "var(--muted)"
+              background: isFetching ? "var(--muted)" : ""
             }}>
               {breed.image?.url && (
                 <img
@@ -181,8 +181,8 @@ export default function Dogs() {
                     position: "absolute", 
                     inset: 0, 
                     width: "100%", 
-                    height: "100%", 
-                    objectFit: "cover",
+                    height: "100% !important", 
+                    objectFit: "fill",
                     backgroundColor: "var(--muted)"
                   }}
                   onError={(e) => {
