@@ -13,13 +13,9 @@ export function Shimmer({ width = '100%', height = '20px', borderRadius = '4px',
     <div
       className={`shimmer ${className}`}
       style={{
-        width,
-        height,
-        borderRadius,
-        background: 'linear-gradient(90deg, var(--muted) 25%, color-mix(in oklab, var(--muted) 60%, transparent) 50%, var(--muted) 75%)',
-        backgroundSize: '200% 100%',
-        animation: 'shimmer 1.5s infinite',
-        willChange: 'background-position',
+        width:width+" !important",
+        height:height+" !important",
+        borderRadius:borderRadius+" !important",
         ...style
       }}
     />
@@ -34,6 +30,7 @@ export function ShimmerCard() {
       padding: 12,
       background: "var(--surface)"
     }}>
+      {/* Image shimmer - one large shimmer */}
       <div style={{
         position: "relative",
         width: "100%",
@@ -45,10 +42,11 @@ export function ShimmerCard() {
       }}>
         <Shimmer width="100%" height="100%" borderRadius="6px" />
       </div>
+      {/* Text shimmers - small lines */}
       <div style={{ marginTop: 8, marginBottom: 8 }}>
-        <Shimmer width="80%" height="16px" />
-        <Shimmer width="100%" height="12px" style={{ marginTop: 4 }} />
-        <Shimmer width="60%" height="12px" style={{ marginTop: 4 }} />
+        <Shimmer width="100%" height="10px" style={{ marginTop: 4 }}  />
+        <Shimmer width="100%" height="10px" style={{ marginTop: 4 }} />
+        <Shimmer width="60%" height="10px" style={{ marginTop: 4 }} />
       </div>
     </div>
   )
